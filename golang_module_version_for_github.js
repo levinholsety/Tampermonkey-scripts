@@ -1,20 +1,21 @@
 // ==UserScript==
 // @name         golang module version for github
 // @namespace    https://github.com/levinholsety
-// @version      1.0
-// @description  Add golang module version in each commit.
+// @version      1.0.1
+// @description  Add golang module version to each commit.
 // @author       levinholsety
 // @include      https://github.com/*
 // @grant        none
 // @require      https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
 // ==/UserScript==
 
-(function() {
-    $(document).on("pjax:end", showGolangModuleVersions);
-})();
+"use strict"
 
-function showGolangModuleVersions() {
-    var list = $("div .commits-listing");
+$(addGolangModuleVersions)
+$(document).on("pjax:end", addGolangModuleVersions);
+
+function addGolangModuleVersions() {
+    var list = $(".commits-listing");
     if (!list) {
         return
     }
